@@ -1,0 +1,17 @@
+.profile-23 i{
+    margin-left: 10px;
+    font-size: 22px;
+    font-weight: 400px;
+    margin-top: 10px;
+    margin-right:10px;
+  }
+  .profile-23 img{
+    margin-left: 3px;
+    margin-right:10px;
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit:cover;
+    margin-top: 1px;
+  }
+  

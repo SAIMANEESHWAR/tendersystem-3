@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROUGH</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/e3a3821133.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="dash.css" rel="stylesheet">
+   
+</head>
+<body>
+
+
+    <div class="container p-5 mt-5 col-md-10 mx-auto col-lg-5">
+        <main class="form-signin w-100 m-auto mt-5">
+            <div>
+            
+              <h1 class="h3 mb-3 fw-normal">Please login</h1>
+          
+              <div class="form-floating">
+                <input type="email" class="form-control" id="f1" value="vender1@123"  placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mt-3">
+                <input type="password" class="form-control" value="vender123" id="f2" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+          
+              
+              <button class="w-100 btn btn-lg btn-primary mt-4" onclick="sub()">REGISTER</button>
+              <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
+            </div>
+          </main>
+    </div>
+
+
+
+
+
+    <script>
+
+
+        const sub = async () => {
+            // window.location.reload();
+            let f1 = document.getElementById("f1").value;
+            let f2 = document.getElementById("f2").value;
+            let str=f1+f2;
+			if(str=="vender1@123vender123"){
+				document.location.href="buyer-vender/vender1.html";
+			}
+			else if(str=="vender2@123vender123"){
+				document.location.href="buyer-vender/vender2.html";
+			}
+			else if(str=="vender3@123vender123"){
+				document.location.href="buyer-vender/vender3.html";
+			}
+          
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

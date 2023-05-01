@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/e3a3821133.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="dash.css" rel="stylesheet">
+</head>
+
+<body>
+	<section class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-aos="fade-down">
+		<div class="container-fluid" style="width: 100%;">
+			<!-- <img src="homephotos/internsalalogo.png" alt="" width="100" height="60"> -->
+			<h1><button class="btn btn-white ms-2 me-2 mt-3" type="button" data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
+						class="fa-solid fa-bars  h3  "></i></button>
+				<h1 class="mt-2">BUYER</h1>
+			</h1>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 navfont">
+
+					<li class="nav-item">
+						<form class="d-flex" role="search">
+							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success" type="submit">Search</button>
+						</form>
+					</li>
+					<li class="nav-item-22">
+						<div class="profile-23">
+							<i class="fa-sharp fa-solid fa-bell"></i>
+						</div>
+					</li>
+
+
+					<li class="nav-item">
+
+						<button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+							<div class="profile-23">
+								<a><img src="homephotos/profile1.png" alt=""></a>
+							</div>
+						</button>
+					</li>
+
+			</div>
+		</div>
+	</section>
+	<h3>my_id:3000</h3>
+	<!--offcanvas-->
+	<div class="p-5">
+		<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+			aria-labelledby="offcanvasWithBothOptionsLabel d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary"
+			style="width: 280px;">
+
+			<div class="offcanvas-header">
+				<h1 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">SCM</h1>
+				<button type="button" class="btn-close border" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+
+			<hr>
+			<ul class="nav nav-pills flex-column mb-auto me-3">
+				<li class="nav-item">
+					<a href="dash.html" class="nav-link " aria-current="page">
+						<i class="fa-solid fa-house me-2"></i> Home
+					</a>
+				</li>
+
+				<li>
+					<a href="order.html" class="nav-link link-body-emphasis ">
+						<i class="fa-solid fa-cart-shopping me-2"></i> Order Form
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link link-body-emphasis active">
+						<i class="fa-solid fa-paper-plane me-2"></i>New Messages
+
+						<!-- <button type="button" class="btn btn-primary">
+							Notifications <span class="badge text-bg-secondary">4</span>
+						  </button> -->
+					</a>
+				</li>
+				
+			</ul>
+			<hr>
+			<div class="dropdown">
+				<a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+					data-bs-toggle="dropdown" aria-expanded="false">
+					<img src="homephotos/profile1.png" alt="" width="32" height="32" class="rounded-circle me-2">
+					<strong>mdo</strong>
+				</a>
+				<ul class="dropdown-menu text-small shadow">
+					<li><a class="dropdown-item" href="#">New project...</a></li>
+					<li><a class="dropdown-item" href="#">Settings</a></li>
+					<li><a class="dropdown-item" href="#">Profile</a></li>
+					<li>
+						<hr class="dropdown-divider">
+					</li>
+					<li><a class="dropdown-item" href="#">Sign out</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<!-- table-->
+	<!-- <div id="fullbody1"></div>
+	<div id="fullbody2"></div>
+	<div id="fullbody3"></div> -->
+
+
+ <div id="allreqno"></div>
+ <hr>
+ <div id="reqwise" ></div>
+
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<!-- web3 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.4.0/web3.min.js"></script>
+
+	<script>
+		let accont;
+		var s1 = "";
+		var s2 = "";
+		 tabledata = "";
+		var arr1 = [];
+		var arr2 = [];
+		var fbody = "";
+
+
+		window.onload = async () => {
+			if (window.ethereum !== "undefined") {
+				console.log("connected");
+				const acconts = await ethereum.request({ method: "eth_requestAccounts" });
+
+				accont = acconts[0];
+
+			} else {
+				console.log("not connected");
+
+			}
+			const ABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "_tval",
+				"type": "uint256[]"
+			}
+		],
+		"name": "conform1",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string[]",
+				"name": "pn",
+				"type": "string[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "qu",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "string",
+				"name": "_date",
+				"type": "string"
+			}
+		],
+		"name": "push",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "selgs",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ids",
+				"type": "uint256"
+			}
+		],
+		"name": "vender1",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "selgs",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ids",
+				"type": "uint256"
+			}
+		],
+		"name": "vender2",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "selgs",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ids",
+				"type": "uint256"
+			}
+		],
+		"name": "vender3",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "bc1",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			}
+		],
+		"name": "bc2",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "numreq",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			}
+		],
+		"name": "reqnum",
+		"outputs": [
+			{
+				"internalType": "uint256[][]",
+				"name": "",
+				"type": "uint256[][]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			}
+		],
+		"name": "returdd",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			}
+		],
+		"name": "returpp",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "co",
+				"type": "uint256"
+			}
+		],
+		"name": "returqq",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "selget1",
+		"outputs": [
+			{
+				"internalType": "uint256[][]",
+				"name": "",
+				"type": "uint256[][]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "selget2",
+		"outputs": [
+			{
+				"internalType": "uint256[][]",
+				"name": "",
+				"type": "uint256[][]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "selget3",
+		"outputs": [
+			{
+				"internalType": "uint256[][]",
+				"name": "",
+				"type": "uint256[][]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+			const address = "0x28693abB7C0a80788C073223f82B13a2e447466d";
+			window.web3 = await new Web3(window.ethereum);
+			window.contract = await new window.web3.eth.Contract(ABI, address);
+			/*vender1*/
+			const allven1 = await window.contract.methods.selget1().call();
+			const tc = await window.contract.methods.numreq().call();
+			const buycon = await window.contract.methods.bc1().call();
+			totval = allven1[0];
+			//   status=allven1[1];
+			reqnum = allven1[2];
+			id1 = allven1[3];
+	 		console.log(reqnum);
+			/*vender2*/
+			const allven2=await window.contract.methods.selget2().call();
+			console.log(allven2);
+			      totval2=allven2[0];
+				  status2=allven2[1];
+				  reqnum2=allven2[2];
+				  id2=allven2[3];
+				 
+			/*vender3*/
+			const allven3=await window.contract.methods.selget3().call();
+			      totval3=allven3[0];
+				  status3=allven3[1];
+				  reqnum3=allven3[2];
+				  id3=allven3[3];
+
+
+			console.log(reqnum3);
+			console.log(totval2);
+			console.log(totval3);
+
+ reqarr=[tc];
+ reqarr2=[];
+for(var i=0;i<tc;i++){
+	reqarr[i]="";
+}
+console.log(reqarr);
+			
+
+			fbody="";
+			for (var i = 0; i < reqnum.length; i++) {
+				 tabledata = "";
+				
+				if (!buycon.includes(String(reqnum[i]))) {
+				
+					var cn = reqnum[i];
+					var sum = 0
+					var data1 = await window.contract.methods.returpp(cn).call();
+					var data2 = await window.contract.methods.returqq(cn).call();
+
+					console.log(totval[i]);
+
+
+
+					var tabledata = `<div class="container p-5 mt-4  mb-4 bg-body-tertiary rounded-3">
+                            <div class="container-fluid py-5">
+                              <h1 class=" mb-5 display-5 fw-bold">REQUEST : ${parseInt(cn) + 1}  </h1>
+							  <h4>FROM ID :${id1}</h4>
+                              <table class="table mt-4">
+                                <thead>
+                                  <tr>
+                                    
+                                    <th scope="col">PRODUCTNAME</th>
+                                    <th scope="col">QUANTITY</th>
+                                    
+                                    <th scope="col">QUOTES</th>
+                            
+                                  </tr>
+                                </thead>
+                                <tbody id="tablebody">`;
+					for (let j = 0; j < totval[i].length; j++) {
+
+						tabledata = tabledata + ` <tr>
+                     
+                    <td><label class="form-check-label" for="flexCheckChecked">${data1[j]}</td>
+                        <td><label class="form-check-label" for="flexCheckChecked">${data2[j]}</td>
+							<td><label class="form-check-label" for="flexCheckChecked">${totval[i][j]}</td>
+                    </tr> `;
+						sum = sum + parseInt(totval[i][j]);
+
+					}
+					tabledata = tabledata + `</tbody>
+                                        </table>
+
+
+                                        <div class="mt-4" ><h3>THE TOTAL PRICE : ${sum}</h3></div>
+                                        <!--button-->
+                                        <div class="container">
+										<div class="container mt-5">
+										<div class="row">
+											<div class="col">
+											<button onclick="pakka(${i},${parseInt(cn)},${1000})" class="btn btn-lg btn-primary" data-bs-toggle="collapse" data-bs-target="#hide">ACCEPT</button>
+											</div>
+											<div class="col">
+											
+											</div>
+										</div>
+										
+										
+									</div>
+									</div>
+                                            
+                                            
+                                        </div>
+                                        </div>
+
+                                        
+                                      
+                                     `;
+
+					fbody = fbody + tabledata;
+                   reqarr[cn]=reqarr[cn]+tabledata;
+				   reqarr2.push(cn);
+				
+			}
+				
+			}
+			// document.getElementById("fullbody1").innerHTML = fbody;
+			
+			sum=0;
+			 fbody1="";
+			for (var i = 0; i < reqnum2.length; i++) {
+				 tabledata = "";
+				
+				
+
+				if (!buycon.includes(String(reqnum2[i]))) {
+					console.log(`reqnum1`);
+					console.log(reqnum2[i]);
+					var cn = reqnum2[i];
+					var sum = 0
+					var data1 = await window.contract.methods.returpp(cn).call();
+					var data2 = await window.contract.methods.returqq(cn).call();
+
+					
+					console.log(`reqnum3`);
+
+
+
+					 tabledata = `<div class="container p-5 mt-4  mb-4 bg-body-tertiary rounded-3">
+                            <div class="container-fluid py-5">
+								<h1 class=" mb-5 display-5 fw-bold">REQUEST : ${parseInt(cn) + 1}  </h1>
+							  <h4>FROM ID :${id2}</h4>
+                              <table class="table mt-4">
+                                <thead>
+                                  <tr>
+                                    
+                                    <th scope="col">PRODUCTNAME</th>
+                                    <th scope="col">QUANTITY</th>
+                                    
+                                    <th scope="col">QUOTES</th>
+                            
+                                  </tr>
+                                </thead>
+                                <tbody id="tablebody">`;
+					for (let j = 0; j < totval2[i].length; j++) {
+
+						tabledata = tabledata + ` <tr>
+                     
+                    <td><label class="form-check-label" for="flexCheckChecked">${data1[j]}</td>
+                        <td><label class="form-check-label" for="flexCheckChecked">${data2[j]}</td>
+							<td><label class="form-check-label" for="flexCheckChecked">${totval2[i][j]}</td>
+                    </tr> `;
+						sum = sum + parseInt(totval2[i][j]);
+
+					}
+					tabledata = tabledata + `</tbody>
+                                        </table>
+
+
+                                        <div class="mt-4" id="tp${i}"><h3>THE TOTALPRICE  :  ${sum}</h3></div>
+                                        <!--button-->
+                                        <div class="container">
+										<div class="container mt-5">
+										<div class="row">
+											<div class="col">
+											<button onclick="pakka(${i},${parseInt(cn)},${2000})" class="btn btn-lg btn-primary" data-bs-toggle="collapse" data-bs-target="#hide">ACCEPT</button>
+											</div>
+											<div class="col">
+											
+											</div>
+										</div>
+										
+										
+									</div>
+									</div>
+                                            
+                                            
+                                        </div>
+                                        </div>
+
+                                        
+                                      
+                                     `;
+
+					fbody1 = fbody1 + tabledata;
+					reqarr[cn]=reqarr[cn]+tabledata;
+					reqarr2.push(cn);
+				
+			}
+				
+				
+			}
+			// document.getElementById("fullbody2").innerHTML = fbody1;
+			
+		/**/
+			sum=0;
+			 fbody2="";
+			 
+			for (var i = 0; i < reqnum3.length; i++) {
+				 tabledata = "";
+				 
+
+				if (!buycon.includes(String(reqnum3[i]))) {
+					console.log(`-->${i}`);
+					console.log(reqnum3[i]);
+					var cn = reqnum3[i];
+					var sum = 0
+					var data1 = await window.contract.methods.returpp(cn).call();
+					var data2 = await window.contract.methods.returqq(cn).call();
+
+
+
+
+					 tabledata = `<div class="container p-5 mt-4  mb-4 bg-body-tertiary rounded-3">
+                            <div class="container-fluid py-5">
+								<h1 class=" mb-5 display-5 fw-bold">REQUEST : ${parseInt(cn) + 1}  </h1>
+							  <h4>FROM ID :${id3}</h4>
+                              <table class="table mt-4">
+                                <thead>
+                                  <tr>
+                                    
+                                    <th scope="col">PRODUCTNAME</th>
+                                    <th scope="col">QUANTITY</th>
+                                    
+                                    <th scope="col">QUOTES</th>
+                            
+                                  </tr>
+                                </thead>
+                                <tbody id="tablebody">`;
+					for (let j = 0; j < totval3[i].length; j++) {
+
+						tabledata = tabledata + ` <tr>
+                     
+                    <td><label class="form-check-label" for="flexCheckChecked">${data1[j]}</td>
+                        <td><label class="form-check-label" for="flexCheckChecked">${data2[j]}</td>
+							<td><label class="form-check-label" for="flexCheckChecked">${totval3[i][j]}</td>
+                    </tr> `;
+						sum = sum + parseInt(totval3[i][j]);
+
+					}
+					tabledata = tabledata + `</tbody>
+                                        </table>
+
+
+                                        <div class="mt-4" id="tp${i}"><h3>THE TOTALPRICE  :  ${sum}</h3></div>
+                                        <!--button-->
+                                        <div class="container">
+										<div class="container mt-5">
+										<div class="row">
+											<div class="col">
+											<button onclick="pakka(${i},${parseInt(cn)},${3000})" class="btn btn-lg btn-primary" data-bs-toggle="collapse" data-bs-target="#hide">ACCEPT</button>
+											</div>
+											<div class="col">
+											
+											</div>
+										</div>
+										
+										
+									</div>
+									</div>
+                                            
+                                            
+                                        </div>
+                                        </div>
+
+                                        
+                                      
+                                     `;
+
+					fbody2 = fbody2 + tabledata;
+					reqarr[cn]=reqarr[cn]+tabledata;
+					reqarr2.push(cn);
+				}
+			}
+				
+				
+			
+			// document.getElementById("fullbody3").innerHTML = fbody2;
+			console.log(reqarr);
+
+
+
+			// for(var i=0;i<reqarr2.length;i++){
+			// 	console.log(i);
+			// 	console.log(reqarr2[i]);
+			// }
+
+			set=new Set(reqarr2);
+			set2=Array.from(set);
+			console.log(set2);
+			// fin="";
+			console.log(set2);
+				// for(var i=0;i<set2.length;i++){
+				// 	fin=fin+reqarr[parseInt(set2[i])];
+				// }
+				// document.getElementById("allreqno").innerHTML=fin;
+				box=`<div><div class="row">` ;
+				for(var i=0;i<set2.length;i++){
+					box=box+`
+					 <div class="col-lg-5 ms-5 p-5 mt-3  shadow">
+				<img class="bd-placeholder-img ms-2 mt-3 rounded-circle border-white" width="125" height="120" src="homephotos/profile1.png">
+        <h2 class=" mt-3 fw-normal">REQUEST-${parseInt(set2[i])+1}</h2>
+        <p>
+			status:
+			<br>
+			Recived Date: 
+			
+			</p>
+        <p>
+        <button onclick="dis(${[parseInt(set2[i])]})" class="btn btn-primary" >View details »</button></p>
+      </div>`;
+				}
+				box=box+`</div></div>`;
+				document.getElementById("allreqno").innerHTML=box;
+
+		}
+		
+
+
+		const pakka = async (rn, cn,idd) => {
+			var arr=[];
+			if(idd==1000){
+				arr=totval[rn];
+			}
+			else if(idd==2000){
+				arr=totval2[rn];
+			}
+			else if(idd==3000){
+				arr=totval3[rn];
+			}
+			web3.eth.getAccounts().then(function (accounts) {
+				var acc = accounts[0];
+
+				return contract.methods.conform1(cn, idd, totval[rn]).send({ from: acc });
+
+			}).then(function (tx) {
+				console.log(tx);
+				alert(" REQUEST SENT SUCCESSFULLY");
+
+			}).catch(function (tx) {
+				console.log(tx);
+				alert(" REQUEST NOT SENT SUCCESSFULLY");
+			})
+
+
+
+
+
+
+		}
+
+
+	
+		
+		const dis = async (s) => {
+			
+			document.getElementById("reqwise").innerHTML=reqarr[s];
+		}
+
+
+	</script>
+
+</body>
+
+</html>
